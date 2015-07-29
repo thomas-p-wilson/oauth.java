@@ -1,0 +1,11 @@
+baseurl: /oauth.java
+collections:
+  readmes:
+    output: true
+    layout: default
+defaults:
+  - scope:
+      path: ""
+      type: readmes
+    values:
+      layout: default
