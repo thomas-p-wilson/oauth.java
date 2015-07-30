@@ -1,18 +1,15 @@
 package com.thomaspwilson.oauth2.provider;
 
-import com.thomaspwilson.oauth2.provider.Configuration;
-import com.thomaspwilson.oauth2.provider.AccessTokenManager;
-import com.thomaspwilson.oauth2.provider.ClientType;
 import com.thomaspwilson.oauth2.fixtures.MutableConfiguration;
 import com.thomaspwilson.oauth2.fixtures.TestClient;
 import com.thomaspwilson.oauth2.fixtures.TestUser;
+import com.thomaspwilson.oauth2.provider.examples.memory.service.memory.InMemoryClientServiceImpl;
+import com.thomaspwilson.oauth2.provider.examples.memory.service.memory.InMemoryCodeServiceImpl;
+import com.thomaspwilson.oauth2.provider.examples.memory.service.memory.InMemoryTokenServiceImpl;
+import com.thomaspwilson.oauth2.provider.examples.memory.service.memory.InMemoryUserServiceImpl;
 import com.thomaspwilson.oauth2.provider.exception.InvalidClientException;
 import com.thomaspwilson.oauth2.provider.exception.InvalidRequestException;
 import com.thomaspwilson.oauth2.provider.exception.InvalidScopeException;
-import com.thomaspwilson.oauth2.provider.impl.memory.service.memory.InMemoryClientServiceImpl;
-import com.thomaspwilson.oauth2.provider.impl.memory.service.memory.InMemoryCodeServiceImpl;
-import com.thomaspwilson.oauth2.provider.impl.memory.service.memory.InMemoryTokenServiceImpl;
-import com.thomaspwilson.oauth2.provider.impl.memory.service.memory.InMemoryUserServiceImpl;
 import com.thomaspwilson.oauth2.provider.io.MutableRequest;
 import com.thomaspwilson.oauth2.provider.io.Request;
 import com.thomaspwilson.oauth2.provider.model.Client;

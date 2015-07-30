@@ -12,7 +12,7 @@
  * limitations under the License.
  */
 
-package com.thomaspwilson.oauth2.provider.impl.memory.model;
+package com.thomaspwilson.oauth2.provider.examples.memory.model;
 
 import com.thomaspwilson.oauth2.provider.io.Request;
 import com.thomaspwilson.oauth2.provider.model.AccessToken;

@@ -11,7 +11,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.thomaspwilson.oauth2.provider.impl.memory.service.memory;
+package com.thomaspwilson.oauth2.provider.examples.memory.service.memory;
 
 import com.thomaspwilson.oauth2.provider.exception.InvalidClientException;
 import com.thomaspwilson.oauth2.provider.model.Client;

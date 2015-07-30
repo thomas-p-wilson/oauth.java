@@ -2,9 +2,9 @@ package com.thomaspwilson.oauth2.provider.flows;
 
 import com.thomaspwilson.oauth2.provider.AbstractTest;
 import static com.thomaspwilson.oauth2.provider.AbstractTest.CLIENT_A;
+import com.thomaspwilson.oauth2.provider.examples.memory.model.InMemoryAccessTokenImpl;
+import com.thomaspwilson.oauth2.provider.examples.memory.model.InMemoryRefreshTokenImpl;
 import com.thomaspwilson.oauth2.provider.exception.InvalidGrantException;
-import com.thomaspwilson.oauth2.provider.impl.memory.model.InMemoryAccessTokenImpl;
-import com.thomaspwilson.oauth2.provider.impl.memory.model.InMemoryRefreshTokenImpl;
 import com.thomaspwilson.oauth2.provider.io.Request;
 import com.thomaspwilson.oauth2.provider.model.AccessToken;
 import java.util.Collections;
