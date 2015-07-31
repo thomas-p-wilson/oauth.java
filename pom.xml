@@ -128,6 +128,7 @@
                 <executions>
                     <execution>
                         <id>enforce-no-snapshots</id>
+                        <phase>validate</phase>
                         <goals>
                             <goal>enforce</goal>
                         </goals>
@@ -158,22 +159,51 @@
                 <groupId>com.mycila</groupId>
                 <artifactId>license-maven-plugin</artifactId>
                 <version>2.11</version>
+                <configuration>
+                    <header>LICENSE_HEADER.txt</header>
+                    <excludes>
+                        <exclude>pom.xml</exclude>
+                        <exclude>LICENSE</exclude>
+                        <exclude>LICENSE_HEADER.txt</exclude>
+                        <exclude>**/pom.xml</exclude>
+                        <exclude>**/README</exclude>
+                        <exclude>src/test/resources/**</exclude>
+                        <exclude>src/main/resources/**</exclude>
+                    </excludes>
+                </configuration>
                 <executions>
                     <execution>
+                        <phase>validate</phase>
                         <goals>
                             <goal>check</goal>
                         </goals>
-                        <configuration>
-                            <excludes>
-                                <exclude>pom.xml</exclude>
-                                <exclude>**/pom.xml</exclude>
-                                <exclude>**/README</exclude>
-                                <exclude>src/test/resources/**</exclude>
-                                <exclude>src/main/resources/**</exclude>
-                            </excludes>
-                        </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.7.5.201505241946</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.eluder.coveralls</groupId>
+                <artifactId>coveralls-maven-plugin</artifactId>
+                <version>3.1.0</version>
             </plugin>
         </plugins>
     </build>
@@ -253,37 +283,6 @@
                         <configuration>
                             <additionalparam>-Xdoclint:none</additionalparam>
                         </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>reports</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.jacoco</groupId>
-                        <artifactId>jacoco-maven-plugin</artifactId>
-                        <version>0.7.5.201505241946</version>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>prepare-agent</goal>
-                                </goals>
-                            </execution>
-                            <execution>
-                                <id>report</id>
-                                <phase>prepare-package</phase>
-                                <goals>
-                                    <goal>report</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.eluder.coveralls</groupId>
-                        <artifactId>coveralls-maven-plugin</artifactId>
-                        <version>3.1.0</version>
                     </plugin>
                 </plugins>
             </build>

@@ -1,4 +1,5 @@
 language: java
 
-after_success:
-  - mvn install coveralls:report -Preports -N
+script: mvn install
+
+after_success: mvn coveralls:report
