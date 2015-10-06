@@ -61,7 +61,8 @@ public abstract class AbstractTokenGranter implements TokenGranter {
     
     protected Client authenticateClient(final Request request) {
         Client client = clientService.find(request.getClientId());
-        if (!client.getSecret().equals(request.getClientSecret())) {
+        if (client == null
+                || !client.getSecret().equals(request.getClientSecret())) {
             throw new InvalidClientException("Invalid credentials");
         }
         return client;

@@ -13,15 +13,14 @@
  */
 package com.thomaspwilson.oauth2.provider.service;
 
-import com.thomaspwilson.oauth2.provider.OAuth2Principal;
 import com.thomaspwilson.oauth2.provider.model.AuthorizationCode;
 
-public interface CodeService {
+public interface CodeService<T extends AuthorizationCode> {
     
-    AuthorizationCode find(String code);
+    T find(String code);
     
-    void save(AuthorizationCode authorization);
+    void save(T authorization);
     
-    void delete(AuthorizationCode authorization);
+    void delete(T authorization);
     
 }

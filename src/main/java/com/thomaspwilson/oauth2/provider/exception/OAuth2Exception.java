@@ -13,6 +13,9 @@
  */
 package com.thomaspwilson.oauth2.provider.exception;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public abstract class OAuth2Exception extends RuntimeException {
     protected String errorUri;
     protected String state;
@@ -43,5 +46,20 @@ public abstract class OAuth2Exception extends RuntimeException {
     }
     public void setState(final String state) {
         this.state = state;
+    }
+    
+    public Map<String, String> toMap() {
+        Map<String, String> result = new HashMap<>();
+        result.put("error_code", getErrorCode());
+        if (getErrorUri() != null) {
+            result.put("error_uri", getErrorUri());
+        }
+        if (getErrorDescription() != null) {
+            result.put("error_description", getErrorDescription());
+        }
+        if (getState() != null) {
+            result.put("state", getState());
+        }
+        return result;
     }
 }

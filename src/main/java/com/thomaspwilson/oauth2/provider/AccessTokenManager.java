@@ -80,6 +80,7 @@ public class AccessTokenManager {
             found = true;
             AccessToken token = granter.grant(request);
             if (token != null) {
+                tokenService.save(token);
                 return token;
             }
         }
@@ -97,9 +98,11 @@ public class AccessTokenManager {
         }
         
         AccessToken accessToken = tokenService.createAccessToken(request, principal);
-        tokenService.save(accessToken);
         
-        RefreshToken refreshToken = tokenService.findRefreshToken(accessToken.getRefreshTokenId());
+        RefreshToken refreshToken = null;
+        if (accessToken.getRefreshTokenId() != null) {
+            refreshToken = tokenService.findRefreshToken(accessToken.getRefreshTokenId());
+        }
         // If we're not to build a refresh token, set it to null just in case
         if (!config.allowRefreshTokens()
                 || !principal.getClient().getAllowedGrantTypes().contains(Parameters.REFRESH_TOKEN)) {
@@ -116,6 +119,7 @@ public class AccessTokenManager {
         if (refreshToken != null) {
             tokenService.save(refreshToken);
         }
+        tokenService.save(accessToken);
         return accessToken;
 
     }
